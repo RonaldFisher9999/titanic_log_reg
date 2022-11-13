@@ -19,13 +19,11 @@ df = pd.read_csv(data_url) # URL로 CSV 불러오기
 st.write(df) # 자동으로 표 그려줌
 # st.table(df) # 이걸로 그려도 됨
 
-
-with st.echo(code_location="below"):
-    import joblib
-    model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
-    model = joblib.load(model_path)
-    st.write("## 로지스틱 회귀 모델")
-    st.write(pd.Series(model.coef_[0], index=["pclass", "age", "sex", "sex*pclass", "cabin_class"]))
+import joblib
+model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
+model = joblib.load(model_path)
+st.write("## 로지스틱 회귀 모델")
+st.write(pd.Series(model.coef_[0], index=["pclass", "age", "sex", "sex*pclass", "cabin_class"]))
 
 st.write("---")
 
