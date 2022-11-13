@@ -89,10 +89,10 @@ if play_button :
     pred = model.predict(input_values)
     st.write("예측 결과")
     if pred[0] == 1 :
-        st.write("생존")
+        st.write("##생존")
         st.write("예측의 오류로 12.9% 확률로 사망(1종 오류)")
     else :
-        st.write("사망")
+        st.write("##사망")
         st.write("예측의 오류로 12.8% 확률로 생존(2종 오류)")
     get_image("death.jfif")
 
