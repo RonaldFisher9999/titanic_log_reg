@@ -50,17 +50,28 @@ with st.echo(code_location="below"):
     
 with st.echo(code_location="below"):
     # 성별 입력 (라디오 버튼)
-    sex = st.radio(
+    sex_button = st.radio(
         label="성별", # 상단 표시되는 이름
         options=["남성", "여성"], # 선택 옵션
         # index=0 # 기본 선택 인덱스
         # horizontal=True # 가로 표시 여부
     )
+    
+if sex_button == "남성" :
+    sex = 0
+else :
+    sex = 1
+    
 with st.echo(code_location="below"):
-    cabin_class = st.radio(
+    cabin_class_button = st.radio(
         label="객실번호",
         options=["있음", "없음"]
     )
+
+if cabin_class_button == "있음" :
+    cabin_class = 1
+else :
+    cabin_class = 0
     
 with st.echo(code_location="below"):
     # 실행 버튼
