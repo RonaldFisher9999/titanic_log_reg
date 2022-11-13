@@ -61,7 +61,7 @@ if sex_button == "남성" :
     sex = 0
 else :
     sex = 1
-    
+
 with st.echo(code_location="below"):
     cabin_class_button = st.radio(
         label="객실번호",
@@ -86,7 +86,7 @@ with st.echo(code_location="below"):
     if play_button:
         st.snow() # 눈송이 애니메이션 표시
         input_values = [[
-            pclass, age, sex, cabin_class
+            pclass, age, sex, sex*pclass, cabin_class
         ]]
         pred = model.predict(input_values)
         st.write("## 분류")
