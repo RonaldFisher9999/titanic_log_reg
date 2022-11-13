@@ -23,18 +23,14 @@ import joblib
 model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
 model = joblib.load(model_path)
 st.write("## 로지스틱 회귀 모델")
-st.write(pd.Series(model.coef_[0], index=["pclass", "age", "sex", "sex*pclass", "cabin_class"]))
+st.write(pd.DataFrame(model.coef_[0], index=["pclass", "age", "sex", "sex*pclass", "cabin_class"], columns=["계수"]))
 
 st.write("---")
 
-# 입력값을 변수로 받아서 사용 가능!
-
-with st.echo(code_location="below"):
-    # 객실등급 입력 (숫자)
-    pclass = st.selectbox(
-        label="객실등급", # 상단 표시되는 이름
-        options=[1, 2, 3]
-    )
+pclass = st.selectbox(
+    label="객실등급", # 상단 표시되는 이름,
+    options=[1, 2, 3]
+)
 
 with st.echo(code_location="below"):
     # 나이 입력 (숫자)
