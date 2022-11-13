@@ -18,6 +18,7 @@ df = pd.read_csv(data_url) # URL로 CSV 불러오기
 
 st.write(df) # 자동으로 표 그려줌
 # st.table(df) # 이걸로 그려도 됨
+st.write(f"데이터 출처 : {data_url}")
 
 import joblib
 model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
@@ -62,7 +63,7 @@ else :
     sex = 1
      
 # 객실 번호 입력 (라디오 버튼)
-cabin_class_button = st.radio(
+cabin_class_button = r2_col2.radio(
     label="객실 번호",
     options=["있음", "없음"]
     )
@@ -88,7 +89,7 @@ if play_button:
     
     st.write("---") # 구분선
 
-    st.write("## 분류")
+    st.write("분류 결과")
     st.write("생존" if pred[0] == 1 else "사망")
 
 
