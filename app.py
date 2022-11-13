@@ -86,9 +86,9 @@ if play_button:
         ]]
     pred = model.predict(input_values)
     
-st.write("---") # 구분선
+    st.write("---") # 구분선
 
-st.write("## 분류")
-st.write("생존" if pred[0] == 1 else "사망")
+    st.write("## 분류")
+    st.write("생존" if pred[0] == 1 else "사망")
 
 
