@@ -94,6 +94,6 @@ if play_button :
     else :
         st.write("사망")
         st.write("예측의 오류로 12.8% 확률로 생존(2종 오류)")
-    get_image("titanic.png")
+    get_image("death.jfif")
 
 
