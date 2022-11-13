@@ -18,7 +18,8 @@ df = pd.read_csv(data_url) # URL로 CSV 불러오기
 
 st.write(df) # 자동으로 표 그려줌
 # st.table(df) # 이걸로 그려도 됨
-st.write(f"데이터 출처 : {data_url}")
+st.write("데이터 출처")
+st.write(f"{data_url}")
 
 import joblib
 model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
@@ -86,9 +87,6 @@ if play_button:
         pclass, age, sex, sex*pclass, cabin_class
         ]]
     pred = model.predict(input_values)
-    
-    st.write("---") # 구분선
-
     st.write("분류 결과")
     st.write("생존" if pred[0] == 1 else "사망")
 
