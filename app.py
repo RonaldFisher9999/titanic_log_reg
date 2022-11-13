@@ -82,12 +82,17 @@ play_button = st.button(
 st.write("---") # 구분선
 
 # 실행 버튼이 눌리면 모델을 불러와서 예측한다
-if play_button:
+if play_button :
     input_values = [[
         pclass, age, sex, sex*pclass, cabin_class
         ]]
     pred = model.predict(input_values)
     st.write("분류 결과")
-    st.write("생존" if pred[0] == 1 else "사망")
+    if pred[0] == 1 :
+        st.write("생존")
+        st.write("예측의 오류로 12.9% 확률로 사망(1종 오류)")
+    else :
+        st.write("사망")
+        st.write("예측의 오류로 12.8% 확률로 생존(2종 오류)")
 
 
