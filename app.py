@@ -22,10 +22,10 @@ st.write(df) # 자동으로 표 그려줌
 
 with st.echo(code_location="below"):
     import joblib
-    model_path = f"{os.path.dirname(os.path.abspath(__file__))}/model.pkl"
+    model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
     model = joblib.load(model_path)
     st.write("## 로지스틱 회귀 모델")
-    st.write(pd.Series(model.coef_[0], index=["Pclass", "Age", "SibSp", "Parch", "Fare", "Sex_male", "Embarked_Q", "Embarked_S"]))
+    st.write(pd.Series(model.coef_[0], index=["pclass", "age", "sex", "sex*pclass", "cabin_class"]))
 
 st.write("---")
 
@@ -33,7 +33,7 @@ st.write("---")
 
 with st.echo(code_location="below"):
     # 객실등급 입력 (숫자)
-    pclass = st.select_slider(
+    pclass = st.selectbox(
         label="객실등급", # 상단 표시되는 이름
         options=[1, 2, 3]
     )
@@ -47,37 +47,7 @@ with st.echo(code_location="below"):
         step=1, # 입력 단위
         # value=30 # 기본값
     )
-
-with st.echo(code_location="below"):
-    # 동승한 형제자매/배우자 수 입력 (숫자)
-    sibsp = st.number_input(
-        label="동승한 형자자매/배우자 수", # 상단 표시되는 이름
-        min_value=0, # 최솟값
-        max_value=99, # 최댓값
-        step=1, # 입력 단위
-        # value=30 # 기본값
-    )
-
-with st.echo(code_location="below"):
-    # 동승한 부모/자녀 수 입력 (숫자)
-    parch = st.number_input(
-        label="동승한 부모/자녀 수", # 상단 표시되는 이름
-        min_value=0, # 최솟값
-        max_value=99, # 최댓값
-        step=1, # 입력 단위
-        # value=30 # 기본값
-    )
-
-with st.echo(code_location="below"):
-    # 운임 입력 (숫자)
-    fare = st.number_input(
-        label="운임", # 상단 표시되는 이름
-        min_value=0.0, # 최솟값
-        max_value=100.0, # 최댓값
-        step=0.1, # 입력 단위
-        # value=25.0 # 기본값
-    )
-
+    
 with st.echo(code_location="below"):
     # 성별 입력 (라디오 버튼)
     sex = st.radio(
@@ -86,15 +56,12 @@ with st.echo(code_location="below"):
         # index=0 # 기본 선택 인덱스
         # horizontal=True # 가로 표시 여부
     )
-
 with st.echo(code_location="below"):
-    # 탑승지 입력 (Select Box)
-    embarked = st.selectbox(
-        label="지역", # 상단 표시되는 이름
-        options=["S", "C", "Q"] # 선택 가능한 옵션들
-        # index=2 # 기본 선택 인덱스
+    cabin_class = st.radio(
+        label="객실번호",
+        options=["있음", "없음"]
     )
-
+    
 with st.echo(code_location="below"):
     # 실행 버튼
     play_button = st.button(
@@ -108,7 +75,7 @@ with st.echo(code_location="below"):
     if play_button:
         st.snow() # 눈송이 애니메이션 표시
         input_values = [[
-            pclass, age, sibsp, parch, fare, sex == "남성", embarked == "Q", embarked == "S"
+            pclass, age, sex, cabin_class
         ]]
         pred = model.predict(input_values)
         st.write("## 분류")
