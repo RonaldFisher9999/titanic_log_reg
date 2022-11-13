@@ -42,7 +42,7 @@ with st.echo(code_location="below"):
     # 나이 입력 (숫자)
     age = st.number_input(
         label="나이", # 상단 표시되는 이름
-        min_value=1, # 최솟값
+        min_value=0, # 최솟값
         max_value=99, # 최댓값
         step=1, # 입력 단위
         # value=30 # 기본값
@@ -52,7 +52,7 @@ with st.echo(code_location="below"):
     # 동승한 형제자매/배우자 수 입력 (숫자)
     sibsp = st.number_input(
         label="동승한 형자자매/배우자 수", # 상단 표시되는 이름
-        min_value=1, # 최솟값
+        min_value=0, # 최솟값
         max_value=99, # 최댓값
         step=1, # 입력 단위
         # value=30 # 기본값
@@ -62,7 +62,7 @@ with st.echo(code_location="below"):
     # 동승한 부모/자녀 수 입력 (숫자)
     parch = st.number_input(
         label="동승한 부모/자녀 수", # 상단 표시되는 이름
-        min_value=1, # 최솟값
+        min_value=0, # 최솟값
         max_value=99, # 최댓값
         step=1, # 입력 단위
         # value=30 # 기본값
