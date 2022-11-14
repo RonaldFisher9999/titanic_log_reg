@@ -84,16 +84,13 @@ play_button = st.button(
 
 st.write("---") # 구분선
 
+
 # 개별 데이터 생존 확률 계산
 data = [pclass, sex, age, sex*pclass, cabin_class]
 log_odds = sum(data * model.coef_[0]) + model.intercept_[0]
 odds = np.exp(log_odds)
 p_death = round(((1/(1+odds)) * 100), 2)
 p_surv = round((100 - p_death), 2)
-
-st.write(data)
-st.write(p_death)
-st.write(p_surv)
 
 # 실행 버튼이 눌리면 모델을 불러와서 예측한다
 if play_button :
@@ -104,8 +101,8 @@ if play_button :
     st.write("예측 결과")
     if pred[0] == 1 :
         st.write("## 생존")
-        st.write(f"{p_death}% 확률로 사망")
+        st.write(f"{p_surv}% 확률로 생존, {p_death}% 확률로 사망")
     else :
         st.write("## 사망")
-        st.write(f"{p_surv}% 확률로 생존")
+        st.write(f"{p_surv}% 확률로 생존, {p_death}% 확률로 사망")
     get_image("death.jfif")
