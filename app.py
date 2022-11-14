@@ -47,7 +47,7 @@ sex_button = r1_col2.radio(
     label="성별", # 상단 표시되는 이름
     options=["남성", "여성"], # 선택 옵션
     # index=0 # 기본 선택 인덱스
-    horizontal=True # 가로 표시 여부
+    #horizontal=True # 가로 표시 여부
 )
     
 if sex_button == "남성" :
@@ -68,7 +68,7 @@ pclass = r2_col1.selectbox(
 cabin_class_button = r2_col2.radio(
     label="객실 번호",
     options=["있음", "없음"]
-    horizontal=True
+    #horizontal=True
     )
 
 if cabin_class_button == "있음" :
