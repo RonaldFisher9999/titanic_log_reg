@@ -85,13 +85,11 @@ play_button = st.button(
 st.write("---") # 구분선
 
 # 개별 데이터 생존 확률 계산
-data = [pclass, age, sex, sex*pclass, cabin_class]
+data = [pclass, sex, age, sex*pclass, cabin_class]
 log_odds = sum(data * model.coef_[0]) + model.intercept_[0]
 odds = np.exp(log_odds)
 p_death = round((1/(1+odds) * 100), 2)
 p_surv = round(((1 - p_death) * 100), 2)
-
-st.write(data)
 
 # 실행 버튼이 눌리면 모델을 불러와서 예측한다
 if play_button :
