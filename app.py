@@ -21,7 +21,7 @@ st.write("타이타닉 탑승자 데이터")
 st.write(df.head(10)) # 자동으로 표 그려줌
 # st.table(df) # 이걸로 그려도 됨
 st.write("데이터 출처")
-st.write(https://www.kaggle.com/competitions/titanic/data)
+st.write("https://www.kaggle.com/competitions/titanic/data")
 
 import joblib
 model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
