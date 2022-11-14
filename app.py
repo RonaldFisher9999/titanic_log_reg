@@ -26,7 +26,7 @@ import joblib
 model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
 model = joblib.load(model_path)
 st.write("## 로지스틱 회귀 모델")
-st.write(pd.DataFrame(model.coef_[0], index=["pclass", "age", "sex", "sex*pclass", "cabin_class"], columns=["계수"]))
+st.write(pd.DataFrame(model.coef_[0], index=["pclass", "sex", "age", "sex*pclass", "cabin_class"], columns=["계수"]))
 
 st.write("---")
 
@@ -85,7 +85,7 @@ st.write("---") # 구분선
 # 실행 버튼이 눌리면 모델을 불러와서 예측한다
 if play_button :
     input_values = [[
-        pclass, age, sex, sex*pclass, cabin_class
+        pclass, sex, sex, sex*pclass, cabin_class
         ]]
     pred = model.predict(input_values)
     st.write("예측 결과")
