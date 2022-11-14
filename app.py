@@ -43,7 +43,7 @@ age = r1_col1.number_input(
 )
 
 # 성별 입력 (라디오 버튼)
-sex_button = r1_col1.radio(
+sex_button = r1_col2.radio(
     label="성별", # 상단 표시되는 이름
     options=["남성", "여성"], # 선택 옵션
     # index=0 # 기본 선택 인덱스
