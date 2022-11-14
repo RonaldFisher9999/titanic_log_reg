@@ -86,10 +86,10 @@ st.write("---") # 구분선
 
 # 개별 데이터 생존 확률 계산
 data = [pclass, sex, age, sex*pclass, cabin_class]
-log_odds = sum(data * model.coef_[0]) + model.intercept_[0]
+log_odds = sum(data * model2.coef_[0]) + model2.intercept_[0]
 odds = np.exp(log_odds)
 p_death = round(((1/(1+odds)) * 100), 2)
-p_surv = round(((1 - p_death) * 100), 2)
+p_surv = round((100 - p_death), 2)
 
 st.write(data)
 st.write(p_death)
