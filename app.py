@@ -48,7 +48,7 @@ sex_button = r1_col2.radio(
     label="성별", # 상단 표시되는 이름
     options=["남성", "여성"], # 선택 옵션
     # index=0 # 기본 선택 인덱스
-    #horizontal=True # 가로 표시 여부
+    horizontal=True # 가로 표시
 )
     
 if sex_button == "남성" :
@@ -62,7 +62,7 @@ r2_col1, r2_col2 = st.columns(2)
 # 객실 등급 입력 (셀렉트 박스)
 pclass_button = r2_col1.selectbox(
     label="객실 등급", # 상단 표시되는 이름,
-    options=["1등급", "2등급", "3등급"]
+    options=["1등급", "2등급", "3등급"],
 )
 
 if pclass_button == "1등급" :
