@@ -11,7 +11,8 @@ def get_image(image_name):
 
 get_image("titanic.png") # https://www.canva.com/
 
-import pandas as pd  # 판다스 불러오기
+import pandas as pd
+import numpy as np
 
 data_url = "https://raw.githubusercontent.com/bigdata-young/bigdata_16th/main/data/titanic_train.csv"
 df = pd.read_csv(data_url) # URL로 CSV 불러오기
@@ -81,6 +82,13 @@ play_button = st.button(
 
 st.write("---") # 구분선
 
+# 개별 데이터 생존 확률 계산
+data = [pclass, age, sex, sex*pclass, cabin_class]
+log_odds = sum(data * model.coef_[0]) + model.intercept_[0]
+odds = np.exp(log_odds)
+p_death = 1/(1+odds)
+p_surv = 1 - p_death
+
 # 실행 버튼이 눌리면 모델을 불러와서 예측한다
 if play_button :
     input_values = [[
@@ -90,10 +98,10 @@ if play_button :
     st.write("예측 결과")
     if pred[0] == 1 :
         st.write("## 생존")
-        st.write("예측의 오류로 12.9% 확률로 사망(1종 오류)")
+        st.write(f"{p_death} 확률로 사망")
     else :
         st.write("## 사망")
-        st.write("예측의 오류로 12.8% 확률로 생존(2종 오류)")
+        st.write(f"{p_surv} 확률로 생존")
     get_image("death.jfif")
 
 
