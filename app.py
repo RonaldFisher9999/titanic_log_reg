@@ -26,8 +26,6 @@ st.write("https://www.kaggle.com/competitions/titanic/data")
 import joblib
 model_path = f"{os.path.dirname(os.path.abspath(__file__))}/titanic_model_lr.pkl"
 model = joblib.load(model_path)
-st.write("## 로지스틱 회귀 모델")
-st.write(pd.DataFrame(model.coef_[0], index=["pclass", "sex", "age", "sex*pclass", "cabin_class"], columns=["계수"]))
 
 st.write("---")
 
@@ -40,7 +38,7 @@ age = r1_col1.number_input(
     min_value=0, # 최솟값
     max_value=99, # 최댓값
     step=1, # 입력 단위
-    value=20 # 기본값
+    value=20, # 기본값
 )
 
 # 성별 입력 (라디오 버튼)
@@ -90,6 +88,9 @@ play_button = st.button(
     )
 
 st.write("---") # 구분선
+
+st.write("#### 로지스틱 회귀 모델")
+st.write(pd.DataFrame(model.coef_[0], index=["pclass", "sex", "age", "sex*pclass", "cabin_class"], columns=["계수"]))
 
 with st.echo(code_location="below") :
     # 개별 데이터 생존 확률 계산
