@@ -91,6 +91,8 @@ odds = np.exp(log_odds)
 p_death = round((1/(1+odds) * 100), 2)
 p_surv = round(((1 - p_death) * 100), 2)
 
+st.write(data)
+
 # 실행 버튼이 눌리면 모델을 불러와서 예측한다
 if play_button :
     input_values = [[
