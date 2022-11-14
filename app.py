@@ -60,16 +60,23 @@ else :
 r2_col1, r2_col2 = st.columns(2)
 
 # 객실 등급 입력 (셀렉트 박스)
-pclass = r2_col1.selectbox(
+pclass_button = r2_col1.selectbox(
     label="객실 등급", # 상단 표시되는 이름,
-    options=[1, 2, 3]
+    options=["1등급", "2등급", "3등급"]
 )
+
+if pclass_button == "1등급" :
+    pclass = 1
+elif pclass_button == "2등급" :
+    pclass = 2
+else :
+    pclass = 3
      
 # 객실 번호 입력 (라디오 버튼)
 cabin_class_button = r2_col2.radio(
     label="객실 번호",
-    options=["있음", "없음"]
-    #horizontal=True
+    options=["있음", "없음"],
+    horizontal=True
     )
 
 if cabin_class_button == "있음" :
