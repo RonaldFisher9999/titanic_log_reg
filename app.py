@@ -33,14 +33,8 @@ st.write("---")
 # 첫번째 행
 r1_col1, r1_col2 = st.columns(2)
 
-# 객실 등급 입력 (셀렉트 박스)
-pclass = r1_col1.selectbox(
-    label="객실 등급", # 상단 표시되는 이름,
-    options=[1, 2, 3]
-)
-
 # 나이 입력 (숫자 입력)
-age = r1_col2.number_input(
+age = r1_col1.number_input(
     label="나이", # 상단 표시되는 이름
     min_value=0, # 최솟값
     max_value=99, # 최댓값
@@ -48,11 +42,8 @@ age = r1_col2.number_input(
     value=20 # 기본값
 )
 
-# 두번째 행
-r2_col1, r2_col2 = st.columns(2)
-    
 # 성별 입력 (라디오 버튼)
-sex_button = r2_col1.radio(
+sex_button = r1_col1.radio(
     label="성별", # 상단 표시되는 이름
     options=["남성", "여성"], # 선택 옵션
     # index=0 # 기본 선택 인덱스
@@ -63,6 +54,15 @@ if sex_button == "남성" :
     sex = 0
 else :
     sex = 1
+
+# 두번째 행
+r2_col1, r2_col2 = st.columns(2)
+
+# 객실 등급 입력 (셀렉트 박스)
+pclass = r2_col1.selectbox(
+    label="객실 등급", # 상단 표시되는 이름,
+    options=[1, 2, 3]
+)
      
 # 객실 번호 입력 (라디오 버튼)
 cabin_class_button = r2_col2.radio(
