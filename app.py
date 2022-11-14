@@ -16,6 +16,7 @@ import pandas as pd  # 판다스 불러오기
 data_url = "https://raw.githubusercontent.com/bigdata-young/bigdata_16th/main/data/titanic_train.csv"
 df = pd.read_csv(data_url) # URL로 CSV 불러오기
 
+st.write("타이타닉 탑승자 데이터")
 st.write(df.head(10)) # 자동으로 표 그려줌
 # st.table(df) # 이걸로 그려도 됨
 st.write("데이터 출처")
@@ -44,7 +45,7 @@ age = r1_col2.number_input(
     min_value=0, # 최솟값
     max_value=99, # 최댓값
     step=1, # 입력 단위
-    #value=30 # 기본값
+    value=20 # 기본값
 )
 
 # 두번째 행
