@@ -14,7 +14,7 @@ get_image("titanic.png") # https://www.canva.com/
 import pandas as pd
 import numpy as np
 
-data_url = "https://raw.githubusercontent.com/bigdata-young/bigdata_16th/main/data/titanic_train.csv"
+data_url = "https://www.kaggle.com/competitions/titanic/data"
 df = pd.read_csv(data_url) # URL로 CSV 불러오기
 
 st.write("타이타닉 탑승자 데이터")
