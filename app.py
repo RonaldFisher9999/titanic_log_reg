@@ -88,7 +88,7 @@ st.write("---") # 구분선
 data = [pclass, sex, age, sex*pclass, cabin_class]
 log_odds = sum(data * model.coef_[0]) + model.intercept_[0]
 odds = np.exp(log_odds)
-p_death = round((1/(1+odds) * 100), 2)
+p_death = round(((1/(1+odds)) * 100), 2)
 p_surv = round(((1 - p_death) * 100), 2)
 
 st.write(data)
