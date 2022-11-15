@@ -52,7 +52,7 @@ sex_button = r1_col2.radio(
 )
     
 if sex_button == "남성" :
-    sex = 0
+    sex = -1
 else :
     sex = 1
 
