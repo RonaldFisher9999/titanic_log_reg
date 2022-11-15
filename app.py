@@ -94,7 +94,7 @@ data = [pclass, sex, age, sex*pclass, cabin_class]
 log_odds = sum(data * model.coef_[0]) + model.intercept_[0]
 odds = np.exp(log_odds)
 p_death = round(((1/(1+odds)) * 100), 2)
-p_surv = 100 - p_death
+p_surv = round((100 - p_death), 2)
 
 
 # 실행 버튼이 눌리면 모델을 불러와서 예측한다
@@ -125,7 +125,7 @@ st.markdown(
     log_odds = sum(data * model.coef_[0]) + model.intercept_[0]
     odds = np.exp(log_odds)
     p_death = round(((1/(1+odds)) * 100), 2)
-    p_surv = 100 - p_death
+    p_surv = round((100 - p_death), 2)
     ```
     """
     )
